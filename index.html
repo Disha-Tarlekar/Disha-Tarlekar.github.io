@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Disha Tarlekar — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #162647;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray: #8a9ab5;
+    --light-bg: #f8f6f2;
+    --card-bg: #ffffff;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light-bg);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(15,31,61,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 5%;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.4rem; font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 8rem 5% 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.75rem; letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-subtitle {
+    font-size: 1.1rem; color: var(--gray);
+    margin: 1.2rem 0 2rem;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.45s ease both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border: none; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+  .stat-item { border-left: 2px solid var(--gold); padding-left: 1rem; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); }
+  .stat-label { font-size: 0.78rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .section-divider {
+    width: 48px; height: 3px;
+    background: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-text p {
+    color: #4a5568; line-height: 1.85; margin-bottom: 1.2rem; font-size: 1rem;
+  }
+  .about-highlights {
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-top: 2rem;
+  }
+  .highlight-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--light-bg);
+  }
+  .highlight-icon {
+    width: 38px; height: 38px; flex-shrink: 0;
+    background: var(--navy); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .highlight-text strong { display: block; font-size: 0.9rem; color: var(--navy); }
+  .highlight-text span { font-size: 0.8rem; color: var(--gray); }
+
+  .about-card {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+  .about-card-label {
+    font-size: 0.7rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  }
+  .cert-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-name { color: var(--white); font-size: 0.9rem; font-weight: 500; }
+  .cert-org { color: var(--gray); font-size: 0.8rem; margin-top: 0.2rem; }
+  .cert-year { color: var(--gold); font-size: 0.75rem; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--light-bg); }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 6px;
+    padding: 1.8rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,31,61,0.1); }
+  .skill-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .skill-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: var(--light-bg);
+    border: 1px solid rgba(15,31,61,0.1);
+    color: var(--navy);
+    font-size: 0.75rem; font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+  }
+  .tag.gold {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.3);
+    color: #9a7a2a;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--white); }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem;
+  }
+  .project-card {
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 6px; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--white);
+  }
+  .project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 50px rgba(15,31,61,0.12); }
+  .project-header {
+    background: var(--navy);
+    padding: 2rem;
+    position: relative;
+    border-bottom: 3px solid var(--gold);
+  }
+  .project-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    position: absolute; top: 0.5rem; right: 1rem;
+    line-height: 1;
+  }
+  .project-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .project-subtitle { font-size: 0.78rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+  .project-body { padding: 1.8rem; }
+  .project-desc { font-size: 0.88rem; color: #4a5568; line-height: 1.7; margin-bottom: 1.2rem; }
+  .project-impact {
+    background: rgba(201,168,76,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 1rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem; color: #7a5e1a;
+    margin-bottom: 1.2rem;
+  }
+  .project-impact strong { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; color: var(--gold); }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-badge {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-size: 0.72rem; font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--light-bg); }
+  .timeline { position: relative; max-width: 750px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 18px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item { padding-left: 55px; position: relative; margin-bottom: 2.5rem; }
+  .timeline-dot {
+    position: absolute; left: 8px; top: 4px;
+    width: 22px; height: 22px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem;
+    box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+  }
+  .timeline-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 6px;
+    padding: 1.8rem;
+    border-left: 3px solid var(--gold);
+  }
+  .timeline-meta {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .timeline-role { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+  .timeline-period { font-size: 0.78rem; color: var(--gray); background: var(--light-bg); padding: 0.25rem 0.6rem; border-radius: 2px; }
+  .timeline-company { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 0.2rem; }
+  .timeline-location { font-size: 0.78rem; color: var(--gray); margin-bottom: 1rem; }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 0.85rem; color: #4a5568;
+    padding: 0.35rem 0; padding-left: 1.2rem;
+    position: relative; line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--gold); font-size: 0.7rem;
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--navy); }
+  #education .section-title { color: var(--white); }
+  #education .section-divider { background: var(--gold); }
+  .edu-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  }
+  .edu-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    padding: 1.8rem;
+    transition: background 0.3s;
+  }
+  .edu-card:hover { background: rgba(255,255,255,0.07); }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.4rem;
+  }
+  .edu-school { font-size: 0.85rem; color: var(--gold); margin-bottom: 0.3rem; }
+  .edu-detail { font-size: 0.8rem; color: var(--gray); }
+  .edu-score {
+    margin-top: 0.8rem;
+    font-size: 1.4rem; font-family: 'Playfair Display', serif;
+    color: var(--gold-light); font-weight: 700;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start;
+  }
+  .contact-info p { color: #4a5568; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--navy);
+    padding: 0.9rem 1.2rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .contact-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+  .contact-link-icon { font-size: 1.1rem; width: 20px; text-align: center; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--navy); letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-group input,
+  .form-group textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--navy);
+    background: var(--light-bg);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--gold); background: white; }
+  .form-submit {
+    background: var(--navy);
+    color: var(--white);
+    border: none; border-radius: 4px;
+    padding: 1rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .form-submit:hover { background: #1a3060; }
+  #form-msg { font-size: 0.85rem; color: #2a7a4b; text-align: center; display: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 2rem 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  footer p { color: var(--gray); font-size: 0.8rem; }
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DT.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">📊 Open to Opportunities · Mumbai</div>
+    <h1 class="hero-name">Disha<br/><span>Tarlekar</span></h1>
+    <p class="hero-subtitle">Entry-level Data Analyst specializing in SQL, Power BI & Excel.<br/>
+    Turning raw data into decisions that drive real business impact.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="Disha_Tarlekar_Resume.pdf" download class="btn-outline">⬇ Download Resume</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">5K+</div>
+        <div class="stat-label">Records Cleaned</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">9.37</div>
+        <div class="stat-label">CGPA</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a B.Sc. IT graduate from Mumbai University (CGPA: 9.37) with a passion for transforming complex datasets into clear, actionable insights. My journey in data analytics started with a real-world internship where I analyzed 5,000+ customer records to uncover churn patterns and revenue impact.</p>
+      <p>I specialize in building end-to-end analytical solutions — from writing complex SQL queries and cleaning messy data to designing multi-page Power BI dashboards that non-technical stakeholders actually understand and use.</p>
+      <p>Currently based in Mulund West, Mumbai, and actively seeking full-time Data Analyst, Business Analyst, or Analyst roles where I can contribute from day one.</p>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎓</div>
+          <div class="highlight-text">
+            <strong>B.Sc. Information Technology</strong>
+            <span>Mumbai University · CGPA 9.37 · 2025</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">📍</div>
+          <div class="highlight-text">
+            <strong>Mulund West, Mumbai</strong>
+            <span>Open to onsite, hybrid & remote roles</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🎯</div>
+          <div class="highlight-text">
+            <strong>Target Roles</strong>
+            <span>Data Analyst · Business Analyst · Analyst</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="about-card">
+        <div class="about-card-label">🏅 Certifications</div>
+        <div class="cert-item">
+          <div class="cert-name">Professional Certification — Data Science & Analytics</div>
+          <div class="cert-org">Itvedant Education Pvt. Ltd., Thane</div>
+          <div class="cert-year">Jun 2025 – Dec 2025 · SQL, Power BI, Excel, ETL</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Data Analysis with Python</div>
+          <div class="cert-org">IBM</div>
+          <div class="cert-year">2025 · Pandas, NumPy, Matplotlib, EDA</div>
+        </div>
+        <br/>
+        <div class="about-card-label" style="margin-top:1rem;">📬 Quick Contact</div>
+        <div style="margin-top:0.8rem;">
+          <div style="color:#aab; font-size:0.82rem; margin-bottom:0.5rem;">📧 tarlekardisha1@gmail.com</div>
+          <div style="color:#aab; font-size:0.82rem; margin-bottom:0.5rem;">📞 +91 87670 39891</div>
+          <div style="color:#aab; font-size:0.82rem; margin-bottom:0.5rem;">🔗 linkedin.com/in/disha-tarlekar</div>
+          <div style="color:#aab; font-size:0.82rem;">💻 github.com/Disha-Tarlekar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I Know</div>
+  <h2 class="section-title">Skills & Tools</h2>
+  <div class="section-divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🗄️</div>
+      <div class="skill-card-title">Languages & Querying</div>
+      <div class="skill-tags">
+        <span class="tag gold">SQL</span>
+        <span class="tag gold">MySQL</span>
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">📊</div>
+      <div class="skill-card-title">Data Visualization & BI</div>
+      <div class="skill-tags">
+        <span class="tag gold">Power BI</span>
+        <span class="tag gold">DAX</span>
+        <span class="tag">Excel (Advanced)</span>
+        <span class="tag">Power Query</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🏗️</div>
+      <div class="skill-card-title">Database & Analytics</div>
+      <div class="skill-tags">
+        <span class="tag">Data Modeling</span>
+        <span class="tag">ETL</span>
+        <span class="tag gold">Window Functions</span>
+        <span class="tag">Subqueries</span>
+        <span class="tag">EDA</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">💼</div>
+      <div class="skill-card-title">Business Analysis</div>
+      <div class="skill-tags">
+        <span class="tag gold">KPI Development</span>
+        <span class="tag">Churn Analysis</span>
+        <span class="tag">Revenue Analysis</span>
+        <span class="tag">Dashboard Design</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🛠️</div>
+      <div class="skill-card-title">Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="tag">GitHub</span>
+        <span class="tag">MS Office</span>
+        <span class="tag">Matplotlib</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🤝</div>
+      <div class="skill-card-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Analytical Thinking</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Documentation</span>
+        <span class="tag">Presentation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="section-divider"></div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-num">01</div>
+        <div class="project-icon">📉</div>
+        <div class="project-title">Customer Churn Analysis & Power BI Dashboard</div>
+        <div class="project-subtitle">SQL · Power BI · Excel</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Designed a complete churn analytics solution to identify high-risk customer segments and revenue impact. Cleaned 5,000+ raw customer records, calculated churn rate and customer lifetime value, and delivered a multi-page interactive dashboard with KPIs and slicers.</p>
+        <div class="project-impact">
+          <strong>💡 Business Impact</strong>
+          Identified high-risk segments contributing to revenue decline and proposed targeted retention strategies.
+        </div>
+        <div class="project-tech">
+          <span class="tech-badge">SQL</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">DAX</span>
+          <span class="tech-badge">Excel</span>
+          <span class="tech-badge">Power Query</span>
+          <span class="tech-badge">EDA</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-num">02</div>
+        <div class="project-icon">🚀</div>
+        <div class="project-title">OrbitIQ — Space Mission SQL Database</div>
+        <div class="project-subtitle">MySQL · Relational Design · Analytics</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Designed a fully normalized relational database with 4 interconnected tables (missions, crew, launch_details, targets). Implemented PK/FK constraints and wrote advanced SQL queries using RANK and NTILE window functions to analyze mission success rates and launch frequency.</p>
+        <div class="project-impact">
+          <strong>💡 Business Impact</strong>
+          Showcased deep understanding of relational DB design, referential integrity, and analytical querying.
+        </div>
+        <div class="project-tech">
+          <span class="tech-badge">MySQL</span>
+          <span class="tech-badge">Window Functions</span>
+          <span class="tech-badge">Joins</span>
+          <span class="tech-badge">Subqueries</span>
+          <span class="tech-badge">Data Modeling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've Worked</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="section-divider"></div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot">✦</div>
+      <div class="timeline-card">
+        <div class="timeline-meta">
+          <div class="timeline-role">Data Analysis Intern</div>
+          <div class="timeline-period">Nov 2025 – Dec 2025</div>
+        </div>
+        <div class="timeline-company">Saiket Systems</div>
+        <div class="timeline-location">📡 Remote · Project: Churn Analysis & Customer Segmentation</div>
+        <ul class="timeline-bullets">
+          <li>Cleaned and standardized 5,000+ customer records using SQL and Excel to improve dataset reliability</li>
+          <li>Performed EDA to identify churn patterns across contract type, payment method, and tenure</li>
+          <li>Wrote analytical SQL queries using joins and aggregations to calculate churn rate and revenue impact</li>
+          <li>Built a multi-page Power BI dashboard with KPIs: Churn %, Revenue Loss, Customer Segments</li>
+          <li>Automated monthly reporting workflow, reducing manual reporting time by 25%</li>
+          <li>Presented insights to stakeholders and suggested data-backed retention strategies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">My Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="section-divider"></div>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">B.Sc. Information Technology</div>
+      <div class="edu-school">Mumbai University</div>
+      <div class="edu-detail">Graduated April 2025</div>
+      <div class="edu-score">9.37 CGPA</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">Higher Secondary Certificate (HSC)</div>
+      <div class="edu-school">Maharashtra State Board</div>
+      <div class="edu-detail">Passed March 2022</div>
+      <div class="edu-score">79.67%</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">Secondary School Certificate (SSC)</div>
+      <div class="edu-school">Maharashtra State Board</div>
+      <div class="edu-detail">Passed March 2020</div>
+      <div class="edu-score">93.00%</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Contact Me</h2>
+  <div class="section-divider"></div>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <p>I'm actively looking for Data Analyst, Business Analyst, or Analyst roles in Mumbai. If you have an opportunity that matches my profile — or just want to connect — feel free to reach out!</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:tarlekardisha1@gmail.com">
+          <span class="contact-link-icon">📧</span>
+          tarlekardisha1@gmail.com
+        </a>
+        <a class="contact-link" href="tel:+918767039891">
+          <span class="contact-link-icon">📞</span>
+          +91 87670 39891
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/disha-tarlekar" target="_blank">
+          <span class="contact-link-icon">🔗</span>
+          linkedin.com/in/disha-tarlekar
+        </a>
+        <a class="contact-link" href="https://github.com/Disha-Tarlekar" target="_blank">
+          <span class="contact-link-icon">💻</span>
+          github.com/Disha-Tarlekar
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="name" placeholder="Recruiter Name"/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="hr@company.com"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="subject" placeholder="Job Opportunity / Collaboration"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="message" rows="5" placeholder="Tell me about the role or opportunity..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">
+          Send Message ✉️
+        </button>
+        <p id="form-msg">✅ Thank you! Message received. I'll get back to you soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Disha Tarlekar</span>. Built with HTML & CSS.</p>
+  <p>Designed for opportunities in <span>Mumbai, India</span>.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Contact form
+  function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email and message.');
+      return;
+    }
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('message').value = '';
+  }
+</script>
+</body>
+</html>
